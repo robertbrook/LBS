@@ -30,3 +30,9 @@ jobs:
     - name: run scraper
       run: |
         python3 ./scraper.py
+    - name: Upload items
+      uses: actions/upload-artifact@v1
+      with:
+        name: items.csv
+        path: items.csv
+      if: ${{ always() }}
