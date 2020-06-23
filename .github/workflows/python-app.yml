@@ -28,4 +28,4 @@ jobs:
         chmod +x scraper.py
     - name: run scraper
       run: |
-        ./scraper.py
+        python3 ./scraper.py
