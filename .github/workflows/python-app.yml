@@ -23,6 +23,7 @@ jobs:
         packages: |
           bs4
           beautifulsoup4
+          requests
     - name: chmod scraper
       run: |
         chmod +x scraper.py
