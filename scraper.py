@@ -3,7 +3,7 @@
 import re
 import csv
 import requests
-from bs4 import BeautifulSoup
+import bs4
 
 page = {}
 
@@ -11,7 +11,7 @@ url = "https://lordsbusiness.parliament.uk/"
 
 r = requests.get(url)
 
-soup = BeautifulSoup(r.text, "html.parser")
+soup = bs4.BeautifulSoup(r.text, "html.parser")
 
 # date_string = soup.select_one("#main > div > div.col-md-9.section > h3 > span").string
 # 
@@ -46,7 +46,7 @@ page["url_date"] = url_date
 def process_section(with_url_date, with_section_value):
     section_url = "https://lordsbusiness.parliament.uk/?businessPaperDate=" + with_url_date + "&sectionId=" + with_section_value
     section_request = requests.get(section_url)
-    section_soup = BeautifulSoup(section_request.text, "html.parser")
+    section_soup = bs4.BeautifulSoup(section_request.text, "html.parser")
     get_business_items(section_soup)
 
 page["sections"] = []
@@ -59,7 +59,7 @@ for section in sections:
     page["sections"].append([section.string, section["value"]])    
     section_url = "https://lordsbusiness.parliament.uk/?businessPaperDate=" + url_date + "&sectionId=" + section["value"]
     section_request = requests.get(section_url)
-    section_soup = BeautifulSoup(section_request.text, "html.parser")
+    section_soup = bs4.BeautifulSoup(section_request.text, "html.parser")
     get_business_items(section_soup)
     
 print(f"processed {url} into items.csv")
