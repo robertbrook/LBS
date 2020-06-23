@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import re
 import csv
 import requests
