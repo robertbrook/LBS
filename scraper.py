@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 page = {}
 
-url = "https://lordsbusiness.parliament.uk/?businessPaperDate=2020-05-12"
+url = "https://lordsbusiness.parliament.uk/"
 
 r = requests.get(url)
 
